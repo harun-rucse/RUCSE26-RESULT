@@ -13,7 +13,7 @@ export const addNewUser = async (
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:4000/api/v1/user',
+      url: '/api/v1/user',
       data: {
         name,
         email,

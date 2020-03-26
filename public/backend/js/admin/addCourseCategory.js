@@ -29,7 +29,7 @@ export const saveCourseCategory = async (courses, part, semester, session) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:4000/api/v1/course',
+      url: '/api/v1/course',
       data: {
         courses,
         part,

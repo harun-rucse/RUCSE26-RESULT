@@ -12,7 +12,7 @@ export const updateUserInfo = async (
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `http://127.0.0.1:4000/api/v1/user/${id}`,
+      url: `/api/v1/user/${id}`,
       data: {
         name,
         email,
@@ -36,7 +36,7 @@ export const deleteUser = async id => {
   try {
     const res = await axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:4000/api/v1/user/${id}`
+      url: `/api/v1/user/${id}`
     });
     window.setTimeout(() => {
       location.assign('/users');

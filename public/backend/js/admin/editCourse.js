@@ -5,7 +5,7 @@ export const updateCourseCategory = async (courses, id) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: `http://127.0.0.1:4000/api/v1/course/${id}`,
+      url: `/api/v1/course/${id}`,
       data: {
         courses
       }
@@ -25,7 +25,7 @@ export const deleteCourseCategory = async id => {
   try {
     const res = await axios({
       method: 'DELETE',
-      url: `http://127.0.0.1:4000/api/v1/course/${id}`
+      url: `/api/v1/course/${id}`
     });
     window.setTimeout(() => {
       location.assign('/courses');

@@ -14,7 +14,7 @@ export const getCourse = async (part, semester, session) => {
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:4000/api/v1/course/semsterCourse',
+      url: '/api/v1/course/semsterCourse',
       data: {
         part,
         semester,
@@ -77,7 +77,7 @@ export const publishResult = async (
   try {
     const res = await axios({
       method: 'POST',
-      url: 'http://127.0.0.1:4000/api/v1/result',
+      url: '/api/v1/result',
       data: {
         courses,
         studentId,
