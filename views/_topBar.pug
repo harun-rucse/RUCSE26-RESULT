@@ -9,6 +9,7 @@
 nav.navbar
     .container-fluid
         .navbar-header
+            a.bars(href='javascript:void(0);')
             if user.role == 'admin'
                 a.navbar-brand(href='/admin') RU CSE Result Managment System
             else
