@@ -1,0 +1,90 @@
+extend base
+
+mixin courseResult(code, credit, title, grade, i)
+    .col-sm-2
+        .form-group.form-float
+            .form-line
+                input(id= `courseCode_${i+1}`).form-control(type='text' value= `${code}`)
+    .col-sm-2
+        .form-group.form-float
+            .form-line
+                input(id= `courseCredit_${i+1}`).form-control(type='text' value= `${credit}`)
+    .col-sm-6
+        .form-group.form-float
+            .form-line
+                input(id= `courseName_${i+1}`).form-control(type='text' value= `${title}`)
+                                        
+    .col-sm-2
+        select(id= `courseGrade_${i+1}`).form-control.show-tick
+            option(value= `${grade}`)= `${grade}`
+            option(value='A+') A+
+            option(value='A') A
+            option(value='A-') A-
+            option(value='B+') B+
+            option(value='B') B
+            option(value='B-') B-
+            option(value='C+') C+
+            option(value='C') C
+            option(value='D') D
+            option(value='F') F
+    .col-sm-12
+
+
+block content
+
+    h2.text-center.col-pink Edit Student Result
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    //- if data.student.name
+                    //-     h2.text-center.m-b-10
+                    //-         | Student Name : #{data.student.name}
+                    //- else
+                    //-     h2.text-center.m-b-10
+                    //-         | Student Name : Unnamed student
+                            
+                    h2.text-center.col-pink.m-t-10
+                        | Student ID : 
+                        input#studentId.form-control.text-center(type='text' value= `${data.studentId}`)
+                        
+                    //- .col-sm-12
+                    //-     .form-group.form-float
+                    //-         .form-line
+                    //-             input#studentId.form-control(type='text' value= `${data.studentId}`)
+                
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+
+                .body
+                    .row.clearfix
+                        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                            
+                        .col-sm-2
+                            h6.card-inside-title COURSE CODE
+
+
+                        .col-sm-2
+                            h6.card-inside-title COURSE CREDIT
+
+                        .col-sm-6
+                            h6.card-inside-title COURSE TITLE
+
+                        .col-sm-2
+                            h5.card-inside-title GRADE
+                        
+                        each cours , i in data.courses
+                            +courseResult(cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, i)
+                
+                input#nOfCoursesResult(type='hidden' value= data.courses.length)       
+                .body
+                    .row.clearfix
+                        .col-sm-4
+                        .col-sm-4
+                            
+                        .col-sm-3
+                            a#btn.btn-lg.btn.bg-blue.waves-effect.m-r-10(href='/results')
+                                span Back
+                            button#result_edit_btn.btn.bg-purple.waves-effect(type='button' value =`${data._id}`)
+                                i.material-icons add_circle
+                                span Update Result

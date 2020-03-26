@@ -1,0 +1,71 @@
+section
+    // Left Sidebar
+    aside#leftsidebar.sidebar
+        // User Info
+        .user-info
+            .image
+                a(href='/profile')
+                    img(src=`/backend/images/users/${user.photo}` width='48' height='48' alt=`${user.name}`)
+            .info-container
+                .name(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')= `${user.name}`.split(' ')[0]
+                .email= `${user.email}`
+                
+        // #User Info
+        // Menu
+        .menu
+            ul.list
+                li.header MAIN NAVIGATION
+                if user.role == 'admin' || user.role == 'subadmin'
+                    li.active
+                        if user.role === 'admin'
+                            a(href='/admin')
+                                i.material-icons fingerprint
+                                span Admin Panel
+                            a(href='/dashboard')
+                                i.material-icons dashboard
+                                span Dashboard
+                        if user.role === 'subadmin'
+                            a(href='/dashboard')
+                                i.material-icons dashboard
+                                span Dashboard
+                        a(href='/profile')
+                            i.material-icons person
+                            span Profile
+                        a(href='/courses')
+                            i.material-icons list
+                            span Course Category
+                        a(href='/users')
+                            i.material-icons people
+                            span Users
+                        a(href='/results')
+                            i.material-icons school
+                            span Results
+                        a(href='/userslist')
+                            i.material-icons school
+                            span Random Result
+                if user.role == 'user'
+                    li.active
+                        a(href='/dashboard')
+                            i.material-icons dashboard
+                            span Dashboard
+                        a(href='/profile')
+                            i.material-icons person
+                            span Profile
+                        a(href='/userslist')
+                            i.material-icons school
+                            span Random Result
+
+                li.header SYSTEMS
+                li
+                a#logout-btn.log
+                    i.material-icons.col-red input
+                    span Log Out
+        // #Menu
+        // Footer
+        .legal
+            .copyright
+                a(href='/') RU CSE Result Management System
+                | .
+                br
+                | 
+                p.m-l-45 &copy; 2019 - 2020

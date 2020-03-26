@@ -1,0 +1,81 @@
+extend base
+
+block append head
+
+
+block content
+
+    h2.text-center.col-pink Create New Course
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    h2
+                        | SELECT PART AND SEMESTER
+                        
+                .body
+                    .row.clearfix
+                        .col-sm-4
+                            select#part.form-control.show-tick
+                                option(value='') -- Part --
+                                option(value='1') 1
+                                option(value='2') 2
+                                option(value='3') 3
+                                option(value='4') 4
+                        .col-sm-4
+                            select#semester.form-control.show-tick
+                                option(value='') -- Semester --
+                                option(value='odd') odd
+                                option(value='even') even
+                        .col-sm-4
+                            select#session.form-control.show-tick
+                                option(value='') -- Session --
+                                option(value='2014-15') 2014-15
+                                option(value='2015-16') 2015-16
+                                option(value='2017-18') 2017-18
+                                option(value='2018-19') 2018-19
+                                option(value='2019-20') 2019-20
+                                option(value='2020-21') 2020-21
+                        
+                        #resultData
+                        #resultDataId(data-locations = `${JSON.stringify(resultData)}`)
+
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+
+                .body
+                    .row.clearfix
+                        .col-sm-9
+                        .col-sm-3
+                            button#add_course_category.btn.bg-purple.waves-effect.l-20(type='button')
+                                i.material-icons add_circle
+                                span Add Courses
+
+                        .col-sm-4
+                            h6.card-inside-title COURSE CODE
+
+
+                        .col-sm-4
+                            h6.card-inside-title COURSE CREDIT
+
+                        .col-sm-4
+                            h6.card-inside-title COURSE TITLE
+
+                        //- if data
+                        //-     each sub in data
+                        //-         +subject(sub.courseCode, sub.courseCredit, sub.courseName)
+                        #nOfCourse
+                        #data
+                        
+                        
+                .body
+                    .row.clearfix
+                        .col-sm-4
+                        .col-sm-4
+                            
+                        .col-sm-3
+                            a#btn.btn-lg.btn.bg-blue.waves-effect.m-r-10(href='/courses')
+                                span Back
+                            button#save_course_category.btn.bg-purple.waves-effect(type='button')
+                                i.material-icons add_circle
+                                span Save

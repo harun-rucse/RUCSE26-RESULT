@@ -1,0 +1,83 @@
+extends base
+
+mixin userResultData(i,courseCode, courseCredit, courseTitle, courseGrade, CGPA, student, len)
+    tr
+        td= i
+        td= courseCode
+        td= courseCredit
+        td= courseTitle        
+        td= courseGrade
+        -const isImprove = ['B-','C+','C','D','F'];
+        if isImprove.includes(courseGrade)
+            td 
+                span.badge.bg-teal Yes
+        else
+            td
+                span.badge.bg-pink No
+        - let cnt = parseInt(len/2)+1;
+        if i === cnt 
+            td= CGPA
+            if student
+                td= student.avgCGPA
+            else
+                td= 0.0
+
+ 
+block content
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    h2.text-center.font-bold.col-pink
+                        | Part #{data.part} #{data.semester} Semester
+                        
+                .body
+                    .row.clearfix
+                        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                            .col-sm-3
+                                if data.student
+                                    p.font-bold Name :  #{data.student.name}
+                                else
+                                    p.font-bold Name :  Not yet signup
+                            .col-sm-3
+                                p.font-bold.col-pink Student ID: #{data.studentId}
+                            .col-sm-2
+                                p.font-bold.col-blue-grey Total Credit: #{data.totalCredit}
+                            .col-sm-2
+                                p.font-bold.col-teal Earn Credit: #{data.gainCredit}
+                            .col-sm-2
+                                if `${data.status}`== 'passed'
+                                    p.font-bold.col-teal Status: #{data.status}
+                                else
+                                    p.font-bold.col-pink Status: #{data.status}
+                    .table-responsive
+                        table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                            thead
+                                tr
+                                    th S/N
+                                    th Course Code
+                                    th Course Credit
+                                    th Course Title
+                                    th Grade
+                                    th Improvement
+                                    th CGPA
+                                    th Avg CGPA
+                            tfoot
+                                tr
+                                    th S/N
+                                    th Course Code
+                                    th Course Credit
+                                    th Course Title
+                                    th Grade
+                                    th Improvement
+                                    th CGPA
+                                    th Avg CGPA
+                            tbody
+                                - let i = 1;
+                                each cours in data.courses
+                                    +userResultData(i,cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, data.CGPA, data.student,courseLength)
+                                    - i++;
+                
+                a.btn.bg-teal.m-t-15.m-r-40.waves-effect(href='/results')
+                            i.material-icons arrow_back
+                            span Back

@@ -1,0 +1,152 @@
+extends base
+
+mixin adminSubInfo(i, name, role, email, phone, studentId)
+    tr
+        td= i
+        if role === 'admin'
+            td= name
+                span.m-l-5
+                    i.col-teal.font-18.material-icons verified_user
+        else
+            td= name
+        if role == 'admin'
+            td
+                span.label.bg-pink Admin
+        else
+            td
+                span.label.bg-orange Sub-Admin
+        td= email
+        td= phone
+        td= studentId
+
+block adminDashboard
+    h4 DASHBOARD
+    .row.clearfix
+        .col-lg-3.col-md-3.col-sm-6.col-xs-12
+            .info-box.bg-pink.hover-expand-effect
+                .icon
+                    i.material-icons playlist_add_check
+                .content
+                    .text COURSE CATEGORY
+                    .number.count-to(data-from='0' data-to=`${nCourse}` data-speed='1000' data-fresh-interval='20')= `${nCourse}`
+                    
+        .col-lg-3.col-md-3.col-sm-6.col-xs-12
+            .info-box.bg-orange.hover-expand-effect
+                .icon
+                    i.material-icons person_add
+                .content
+                    .text TOTAL USERS
+                    .number.count-to(data-from='0' data-to=`${nUsers}` data-speed='1000' data-fresh-interval='20')= `${nUsers}`
+        .col-lg-3.col-md-3.col-sm-6.col-xs-12
+            .info-box.bg-cyan.hover-expand-effect
+                .icon
+                    i.material-icons group
+                .content
+                    .text TOTAL ADMIN
+                    .number.count-to(data-from='0' data-to=`${nAdmin}` data-speed='1000' data-fresh-interval='20')= `${nAdmin}`
+        .col-lg-3.col-md-3.col-sm-6.col-xs-12
+            .info-box.bg-light-green.hover-expand-effect
+                .icon
+                    i.material-icons group
+                .content
+                    .text TOTAL SUB-ADMIN
+                    .number.count-to(data-from='0' data-to=`${nSubAdmin}` data-speed='1000' data-fresh-interval='20')= `${nSubAdmin}`
+                    
+                    
+    .row.clearfix
+        .col-lg-3.col-md-4.col-sm-12.col-xs-12
+            .info-box.bg-purple.hover-zoom-effect
+                .icon
+                    i.material-icons school
+                .content
+                    .text PART 1 ODD SEMESTER
+                    .number.count-to(data-from='0' data-to=`${_1partOddSem}` data-speed='1000' data-fresh-interval='20')= `${_1partOddSem}`
+                    
+            .info-box.bg-indigo.hover-zoom-effect
+                .icon
+                    i.material-icons school
+                .content
+                    .text PART 1 EVEN SEMESTER
+                    .number.count-to(data-from='0' data-to=`${_1partEvenSem}` data-speed='1000' data-fresh-interval='20')= `${_1partEvenSem}`
+            
+            .info-box.bg-teal.hover-zoom-effect
+                .icon
+                    i.material-icons school
+                .content
+                    .text PART 2 ODD SEMESTER
+                    .number.count-to(data-from='0' data-to=`${_2partOddSem}` data-speed='1000' data-fresh-interval='20')= `${_2partOddSem}`
+                    
+            .info-box.bg-cyan.hover-zoom-effect
+                .icon
+                    i.material-icons school
+                .content
+                    .text PART 2 EVEN SEMESTER
+                    .number.count-to(data-from='0' data-to=`${_2partEvenSem}` data-speed='1000' data-fresh-interval='20')= `${_2partEvenSem}`
+                    
+            .info-box.bg-purple.hover-zoom-effect
+                .icon
+                    i.material-icons school
+                .content
+                    .text PART 3 ODD SEMESTER
+                    .number.count-to(data-from='0' data-to=`${_3partOddSem}` data-speed='1000' data-fresh-interval='20')= `${_3partOddSem}`
+            .info-box.bg-blue.hover-zoom-effect
+                .icon
+                    i.material-icons school
+                .content
+                    .text PART 3 EVEN SEMESTER
+                    .number.count-to(data-from='0' data-to=`${_3partEvenSem}` data-speed='1000' data-fresh-interval='20')=`${_3partEvenSem}`
+            .info-box.bg-green.hover-zoom-effect
+                .icon
+                    i.material-icons school
+                .content
+                    .text PART 4 ODD SEMESTER
+                    .number.count-to(data-from='0' data-to=`${_4partOddSem}` data-speed='1000' data-fresh-interval='20')= `${_4partOddSem}`
+            .info-box.bg-light-blue.hover-zoom-effect
+                .icon
+                    i.material-icons school
+                .content
+                    .text PART 4 EVEN SEMESTER
+                    .number.count-to(data-from='0' data-to=`${_4partEvenSem}` data-speed='1000' data-fresh-interval='20')= `${_4partEvenSem}`
+                    
+        .col-lg-9.col-md-8.col-sm-12.col-xs-12
+            h3.text-center.col-pink WEBSITE MAINTAINS
+            .card 
+                .header
+                    h2 Admin Informations  
+                .body
+                    .table-responsive
+                        table.table.table-hover.dashboard-task-infos
+                            thead
+                                tr
+                                    th #
+                                    th Name
+                                    th Role
+                                    th Email
+                                    th Phone
+                                    th ID
+                            tbody
+                                - let i = 1;
+                                each el in adminData
+                                    +adminSubInfo(i,el.name, el.role, el.email, el.phone, el.studentId)
+                                    - i++;
+                                    
+            .card 
+                .header
+                    h2 Sub-Admin Informations  
+                .body
+                    .table-responsive
+                        table.table.table-hover.dashboard-task-infos
+                            thead
+                                tr
+                                    th #
+                                    th Name
+                                    th Role
+                                    th Email
+                                    th Phone
+                                    th ID
+                            tbody
+                                - i = 1;
+                                each el in subAdminData
+                                    +adminSubInfo(i, el.name, el.role, el.email, el.phone, el.studentId)
+                                    - i++;
+                                        

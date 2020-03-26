@@ -1,0 +1,60 @@
+extend base
+
+mixin courseCategory(code, credit, title, i)
+    .col-sm-3
+        .form-group.form-float
+            .form-line
+                input(id= `courseCode_${i+1}`).form-control(type='text' value= `${code}`)
+    .col-sm-3
+        .form-group.form-float
+            .form-line
+                input(id= `courseCredit_${i+1}`).form-control(type='text' value= `${credit}`)
+    .col-sm-6
+        .form-group.form-float
+            .form-line
+                input(id= `courseName_${i+1}`).form-control(type='text' value= `${title}`)
+                                        
+    .col-sm-12
+
+
+
+block append head
+
+
+block content
+
+    h2.text-center.col-pink Edit Course Category
+    .row.clearfix       
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+
+                .body
+                    .row.clearfix
+                        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                            
+                        .col-sm-3
+                            h6.card-inside-title COURSE CODE
+
+
+                        .col-sm-3
+                            h6.card-inside-title COURSE CREDIT
+
+                        .col-sm-6
+                            h6.card-inside-title COURSE TITLE
+
+                        
+                        each cours , i in data.courses
+                            +courseCategory(cours.courseCode, cours.courseCredit, cours.courseName, i)
+                
+                input#nOfCoursesCategory(type='hidden' value= data.courses.length)       
+                .body
+                    .row.clearfix
+                        .col-sm-4
+                        .col-sm-4
+                            
+                        .col-sm-3
+                            a#btn.btn-lg.btn.bg-blue.waves-effect.m-r-10(href='/courses')
+                                span Back
+                            button#course_edit_btn.btn.bg-purple.waves-effect(type='button' value =`${data._id}`)
+                                i.material-icons add_circle
+                                span Update Courses

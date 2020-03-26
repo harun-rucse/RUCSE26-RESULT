@@ -1,0 +1,72 @@
+extends base
+
+mixin userData(name, photo, studentId, email, phone, id, role)
+    tr
+        if role === 'admin'
+            td= name
+                span.m-l-5
+                    i.col-teal.font-18.material-icons verified_user
+        if role === 'subadmin'
+            td= name
+                span.m-l-5
+                    i.col-orange.font-18.material-icons verified_user
+        if role === 'user'
+            td= name
+        td 
+            .user-info
+                .image
+                    a(href=`/user/show/${id}`)
+                        img(src=`/backend/images/users/${photo}` width='48' height='48' alt=`${user.name}`)  
+        td= studentId
+        td= email
+        td= phone
+        td
+            if role === 'admin'
+                span.badge.bg-pink= `${role}`
+            else if role === 'subadmin'
+                span.badge.bg-orange= `${role}`
+            else
+                span.badge.bg-teal= `${role}`
+        td 
+            a.btn.btn-primary.btn-sm.waves-effect.m-r-5(href=`/user/edit/${id}`)
+                i.material-icons launch
+            if user.role === 'admin'
+                button#delete_user_btn.btn.btn-danger.btn-sm.waves-effect(type= 'button' value=`${id}` )
+                    i.material-icons delete
+                    
+block content
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    a#course_show.btn.btn.bg-purple.waves-effect(href='/adduser')
+                        i.material-icons add_circle
+                        span Add New User
+                    h2.text-center.font-bold.col-pink
+                        | Users List
+                    
+                .body
+                    .table-responsive
+                        table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                            thead
+                                tr
+                                    th Name
+                                    th Photo
+                                    th Student ID
+                                    th Email
+                                    th Phone
+                                    th Role
+                                    th Action
+                            tfoot
+                                tr
+                                    th Name
+                                    th Photo
+                                    th Student ID
+                                    th Email
+                                    th Phone
+                                    th Role
+                                    th Action
+                            tbody
+                                each user in data
+                                    +userData(user.name, user.photo, user.studentId, user.email, user.phone, user._id, user.role)
+                                

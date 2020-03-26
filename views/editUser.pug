@@ -1,0 +1,53 @@
+extends base
+
+block content
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    h1
+                    | Edit User Information
+                    
+                .body
+                    form#edit_user_info
+                        label(for='name') User Name
+                        .form-group
+                            .form-line
+                                input#name.form-control(type='text' value=`${data.name}`)
+                                
+                        label(for='studentId') Student ID
+                        .form-group
+                            .form-line
+                                input#studentId.form-control(type='text' value=`${data.studentId}`)
+                                
+                        label(for='email') Email
+                        .form-group
+                            .form-line
+                                input#email.form-control(type='text' value=`${data.email}`)
+                        label(for='phone') Phone
+                        .form-group
+                            .form-line
+                                input#phone.form-control(type='text ' value= `${data.phone}`)
+                        if user.role == 'admin'
+                            .form-group
+                                .row
+                                    .col-sm-2
+                                        select#edit_user_role.form-control.show-tick
+                                            option(value=`${data.role}`)= `${data.role}`
+                                            option(value='user') User
+                                            option(value='subadmin') Sub Admin
+                                            option(value='admin') Administrator
+                        if user.role == 'subadmin'
+                            select#edit_user_role.form-control.show-tick
+                                option(value=`${data.role}`)= `${data.role}`
+                                            
+                        br
+                        #user_id
+                        a.btn.bg-teal.m-t-15.m-r-40.waves-effect(href='/users')
+                            i.material-icons arrow_back
+                            span Back
+                        
+                        button#edit_user_btn.btn.bg-purple.m-t-15.waves-effect(type='button' value =`${data._id}`)
+                            i.material-icons sync
+                            span Update
+                        

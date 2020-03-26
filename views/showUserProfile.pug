@@ -1,0 +1,60 @@
+extends base
+
+block content
+    .row.clearfix
+        .col-xs-12.col-sm-3.col-md-6.col-lg-12
+            .card.profile-card
+                .profile-header &nbsp;
+                .profile-body
+                    .image-area
+                        img(src=`/backend/images/users/${data.photo}` alt=`${data.name}`)
+                    .content-area
+                        h3= data.name
+                        p Studying Dept. of CSE in RU
+                        if data.role === 'admin'
+                            p Role: Admin
+                        if data.role === 'subadmin'
+                            p Role: Sub-Admin
+                        if data.role === 'user'
+                            p Role: Student
+                            
+            .card.card-about-me
+                .header
+                    h2 ABOUT USER
+                .body
+                    ul
+                        li
+                            .title
+                                i.material-icons library_books
+                                |                                         Education
+                            .content
+                                | B.S. in Computer Science from the University of Rajshahi
+                        li
+                            .title
+                                i.material-icons location_on
+                                |                                         Location
+                            .content
+                                | #{data.location}
+                        li
+                            .title
+                                i.material-icons edit
+                                |                                         Skills
+                            .content
+                                span.label.bg-red= data.skill
+                                
+                        li
+                            .title
+                                i.material-icons notes
+                                |                                         About User
+                            .content
+                                | #{data.description}
+             
+            if user.role == 'user'                   
+                a.btn.bg-teal.m-t-5.m-b-40.waves-effect(href='/userslist')
+                    i.material-icons arrow_back
+                    span Back
+            else
+                a.btn.bg-teal.m-t-5.m-b-40.waves-effect(href='/users')
+                    i.material-icons arrow_back
+                    span Back
+        

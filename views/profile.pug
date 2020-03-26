@@ -1,0 +1,207 @@
+extends base
+
+block content
+    .row.clearfix
+        .col-xs-12.col-sm-3
+            .card.profile-card
+                .profile-header &nbsp;
+                .profile-body
+                    .image-area
+                        img(src=`/backend/images/users/${user.photo}` alt=`${user.name}`)
+                    .content-area
+                        h3= data.name
+                        p Studying Dept. of CSE in RU
+                        if data.role === 'admin'
+                            p Role: Admin
+                        if data.role === 'subadmin'
+                            p Role: Sub-Admin
+                        if data.role === 'user'
+                            p Role: Student
+                            
+            .card.card-about-me
+                .header
+                    h2 ABOUT ME
+                .body
+                    ul
+                        li
+                            .title
+                                i.material-icons library_books
+                                |                                         Education
+                            .content
+                                | B.S. in Computer Science from the University of Rajshahi
+                        li
+                            .title
+                                i.material-icons location_on
+                                |                                         Location
+                            .content
+                                | #{data.location}
+                        li
+                            .title
+                                i.material-icons edit
+                                |                                         Skills
+                            .content
+                                span.label.bg-red= data.skill
+                                
+                        li
+                            .title
+                                i.material-icons notes
+                                |                                         About Me
+                            .content
+                                | #{data.description}
+        .col-xs-12.col-sm-9
+            .card
+                .body
+                    div
+                        ul.nav.nav-tabs(role='tablist')
+                            //- li.active(role='presentation')
+                            //-     a(href='#home' aria-controls='home' role='tab' data-toggle='tab') Home
+                            li.active(role='presentation')
+                                a(href='#profile_settings' aria-controls='settings' role='tab' data-toggle='tab') Profile Settings
+                            li(role='presentation')
+                                a(href='#change_password_settings' aria-controls='settings' role='tab' data-toggle='tab') Change Password
+                        .tab-content
+                            //- #home.tab-pane.fade.in.active(role='tabpanel')
+                            //-     .panel.panel-default.panel-post
+                            //-         .panel-heading
+                            //-             .media
+                            //-                 .media-left
+                            //-                     a(href='#')
+                            //-                         img(src='/backend/assets/images/user-lg.jpg')
+                            //-                 .media-body
+                            //-                     h4.media-heading
+                            //-                         a(href='#')= data.name
+                            //-                     |                                                         Shared publicly - 26 Feb 2020
+                            //-         .panel-body
+                            //-             .post
+                            //-                 .post-heading
+                            //-                     p
+                            //-                         | I am a very simple wall post. I am good at containing 
+                            //-                         a(href='#') #small
+                            //-                         |  bits of 
+                            //-                         a(href='#') #information
+                            //-                         | . I require little more information to use effectively.
+                            //-                 .post-content
+                            //-                     img.img-responsive(src='/backend/assets/images/profile-post-image.jpg')
+                            //-         .panel-footer
+                            //-             ul
+                            //-                 li
+                            //-                     a(href='#')
+                            //-                         i.material-icons thumb_up
+                            //-                         span 12 Likes
+                            //-                 li
+                            //-                     a(href='#')
+                            //-                         i.material-icons comment
+                            //-                         span 5 Comments
+                            //-                 li
+                            //-                     a(href='#')
+                            //-                         i.material-icons share
+                            //-                         span Share
+                            //-             .form-group
+                            //-                 .form-line
+                            //-                     input.form-control(type='text' placeholder='Type a comment')
+                            //-     .panel.panel-default.panel-post
+                            //-         .panel-heading
+                            //-             .media
+                            //-                 .media-left
+                            //-                     a(href='#')
+                            //-                         img(src='/backend/assets/images/user-lg.jpg')
+                            //-                 .media-body
+                            //-                     h4.media-heading
+                            //-                         a(href='#')= data.name
+                            //-                     |                                                         Shared publicly - 01 Oct 2018
+                            //-         .panel-body
+                            //-             .post
+                            //-                 .post-heading
+                            //-                     p
+                            //-                         | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                            //-                 .post-content
+                            //-                     iframe(width='100%' height='360' src='https://www.youtube.com/embed/10r9ozshGVE' frameborder='0' allowfullscreen='')
+                            //-         .panel-footer
+                            //-             ul
+                            //-                 li
+                            //-                     a(href='#')
+                            //-                         i.material-icons thumb_up
+                            //-                         span 125 Likes
+                            //-                 li
+                            //-                     a(href='#')
+                            //-                         i.material-icons comment
+                            //-                         span 8 Comments
+                            //-                 li
+                            //-                     a(href='#')
+                            //-                         i.material-icons share
+                            //-                         span Share
+                            //-             .form-group
+                            //-                 .form-line
+                            //-                     input.form-control(type='text' placeholder='Type a comment')
+                            #profile_settings.tab-pane.fade.in.active(role='tabpanel')
+                                form#update_me.form-horizontal
+                                    .form-group
+                                        label.col-sm-2.control-label(for='name') User Photo
+                                        .col-sm-10
+                                            .form-line
+                                                input#photo.form-control(type='file' name='photo' accept='image/*')
+                                                
+                                    .form-group
+                                        label.col-sm-2.control-label(for='name') User Name
+                                        .col-sm-10
+                                            .form-line
+                                                input#name.form-control(type='text' name='name' placeholder='Name' value= data.name required='')
+                                    .form-group
+                                        label.col-sm-2.control-label(for='Email') Email
+                                        .col-sm-10
+                                            .form-line
+                                                input#email.form-control(type='email' name='Email' placeholder='Email' value= data.email required='')
+                                    .form-group
+                                        label.col-sm-2.control-label(for='studentId') Student ID
+                                        .col-sm-10
+                                            .form-line
+                                                input#studentId.form-control(type='text' name='studentId' placeholder='studentId' value= data.studentId required='')
+                                    .form-group
+                                        label.col-sm-2.control-label(for='phone') Phone No
+                                        .col-sm-10
+                                            .form-line
+                                                input#phone.form-control(type='text' name='phone' placeholder='phone' value= data.phone required='')
+                                    .form-group
+                                        label.col-sm-2.control-label(for='InputSkills') Skills
+                                        .col-sm-10
+                                            .form-line
+                                                input#skill.form-control(type='text' name='InputSkills' placeholder='Skills' value= data.skill )
+                                    .form-group
+                                        label.col-sm-2.control-label(for='location') Location
+                                        .col-sm-10
+                                            .form-line
+                                                input#skill.form-control(type='text' name='location' placeholder='location' value= data.location )
+                                    .form-group
+                                        label.col-sm-2.control-label(for='InputSkills') About Me
+                                        .col-sm-10
+                                            .form-line
+                                                input#description.form-control(type='text' name='description' placeholder='Description' value= data.description required='')
+                                    .form-group
+                                        .col-sm-offset-2.col-sm-10
+                                            input#terms_condition_check.chk-col-red.filled-in(type='checkbox')
+                                            label(for='terms_condition_check')
+                                                | I agree to the 
+                                                a(href='#') terms and conditions
+                                    .form-group
+                                        .col-sm-offset-2.col-sm-10
+                                            button.btn.btn-danger(type='submit') SUBMIT
+                            #change_password_settings.tab-pane.fade.in(role='tabpanel')
+                                form#update_my_password.form-horizontal
+                                    .form-group
+                                        label.col-sm-3.control-label(for='OldPassword') Old Password
+                                        .col-sm-9
+                                            .form-line
+                                                input#currentPassword.form-control(type='password' name='OldPassword' placeholder='Old Password' required='')
+                                    .form-group
+                                        label.col-sm-3.control-label(for='NewPassword') New Password
+                                        .col-sm-9
+                                            .form-line
+                                                input#password.form-control(type='password' name='NewPassword' placeholder='New Password' required='')
+                                    .form-group
+                                        label.col-sm-3.control-label(for='NewPasswordConfirm') New Password (Confirm)
+                                        .col-sm-9
+                                            .form-line
+                                                input#passwordConfirm.form-control(type='password' name='NewPasswordConfirm' placeholder='New Password (Confirm)' required='')
+                                    .form-group
+                                        .col-sm-offset-3.col-sm-9
+                                            button.btn.btn-danger(type='submit') SUBMIT

@@ -1,0 +1,62 @@
+extends base
+
+block content
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    h1
+                    | Add New User
+                    
+                .body
+                    form#add_user_info
+                        label(for='name') User Name
+                        .form-group
+                            .form-line
+                                input#name.form-control(type='text' )
+                                
+                        label(for='studentId') Student ID
+                        .form-group
+                            .form-line
+                                input#studentId.form-control(type='text' )
+                                
+                        label(for='email') Email
+                        .form-group
+                            .form-line
+                                input#email.form-control(type='text' )
+                        label(for='password') Password
+                        .form-group
+                            .form-line
+                                input#password.form-control(type='password' )
+                        label(for='passwordConfirm') Confirm Password
+                        .form-group
+                            .form-line
+                                input#passwordConfirm.form-control(type='password' )
+                        label(for='phone') Phone
+                        .form-group
+                            .form-line
+                                input#phone.form-control(type='text ')
+                        .form-group
+                            .row
+                                .col-sm-2
+                                    if user.role === 'admin'
+                                        select#add_user_select.form-control.show-tick
+                                            option(value='') -- Role --
+                                            option(value='user') User
+                                            option(value='subadmin') Sub Admin
+                                            option(value='admin') Administrator
+                                    if user.role == 'subadmin'
+                                        select#add_user_select.form-control.show-tick
+                                            option(value='') -- Role --
+                                            option(value='user') User
+                        
+                        br
+                        #user_id
+                        a.btn.bg-teal.m-r-10.waves-effect(href='/users')
+                            i.material-icons arrow_back
+                            span Back
+                        button#add_user_btn.btn.bg-purple.waves-effect(type='button')
+                            i.material-icons person_add
+                            span Add New User
+                        
+                        

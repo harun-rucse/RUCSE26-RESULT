@@ -1,0 +1,74 @@
+extends base
+
+mixin userResultData(i,courseCode, courseCredit, courseTitle, courseGrade, CGPA, student)
+    tr
+        td= i
+        td= courseCode
+        td= courseCredit
+        td= courseTitle        
+        td= courseGrade
+
+ 
+block content
+    .row.clearfix
+        if data.length > 0
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Part #{data[0].part} #{data[0].semester} Semester
+                            
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                .col-sm-3
+                                    if data[0].student
+                                        p.font-bold Name :  #{data[0].student.name}
+                                    else
+                                        p.font-bold Name :  Not yet signup
+                                .col-sm-3
+                                    p.font-bold.col-pink CGPA: #{data[0].CGPA}
+                                .col-sm-2
+                                    p.font-bold.col-blue-grey Total Credit: #{data[0].totalCredit}
+                                .col-sm-2
+                                    p.font-bold.col-teal Earn Credit: #{data[0].gainCredit}
+                                .col-sm-2
+                                    if `${data[0].status}`== 'passed'
+                                        p.font-bold.col-teal Status: #{data[0].status}
+                                    else
+                                        p.font-bold.col-pink Status: #{data[0].status}
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover
+                                thead
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        
+                                tfoot
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                    
+                                tbody
+                                    each el in data
+                                        - let i = 1;
+                                        each cours in el.courses
+                                            +userResultData(i, cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, el.CGPA, el.student)
+                                            - i++;
+                                            
+        else 
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Result Not Found!!!
+                                    
+        a.btn.bg-teal.m-t-10.m-l-20.m-b-20.waves-effect(href='/userslist')
+            i.material-icons arrow_back
+            span Back

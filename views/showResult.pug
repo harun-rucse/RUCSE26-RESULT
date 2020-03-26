@@ -1,0 +1,334 @@
+extends base
+
+mixin tableData(studentId,session,coursesData,gainCredit,cgpa,student,status,id)
+
+    tr
+        td= studentId
+        td= session
+        each cours in coursesData
+            td= `${cours.courseGrade}`
+        td= gainCredit
+        td= cgpa
+        if student
+            td= student.avgCGPA
+        else
+            td= 0.0
+        td= status
+        td 
+            a.btn.btn-primary.btn-sm.waves-effect.m-r-5(href=`/result/show/${id}`)
+                i.material-icons visibility
+            a.btn.btn-primary.btn-sm.waves-effect.m-r-5(href=`/result/edit/${id}`)
+                i.material-icons launch
+            button#delete_result_btn.btn.btn-danger.btn-sm.waves-effect(type= 'button' value=`${id}` )
+                i.material-icons delete
+
+
+block content
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    a#course_show.btn.btn.bg-purple.waves-effect(href='/addresult')
+                        i.material-icons add_circle
+                        span Add New Result
+                   
+                if _1partOddSem.length > 0
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                h4.text-center.font-bold.col-pink
+                                    | Part 1 odd Semester
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _1partOddSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_1partOddSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tfoot
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _1partOddSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_1partOddSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tbody
+                                    each cours in _1partOddSem
+                                        +tableData(cours.studentId,cours.session,cours.courses,cours.gainCredit,cours.CGPA,cours.student,cours.status,cours._id)
+                                        
+                    br
+                    br
+                    br
+            
+                if _1partEvenSem.length > 0
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                h4.text-center.font-bold.col-pink
+                                    | Part 1 even Semester
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _1partEvenSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_1partEvenSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tfoot
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _1partEvenSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_1partEvenSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tbody
+                                    each cours in _1partEvenSem
+                                        +tableData(cours.studentId,cours.session,cours.courses,cours.gainCredit,cours.CGPA,cours.student,cours.status,cours._id)
+                                        
+                    br
+                    br
+                    br                        
+                
+                if _2partOddSem.length > 0
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                h4.text-center.font-bold.col-pink
+                                    | Part 2 odd Semester
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _2partOddSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_2partOddSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tfoot
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _2partOddSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_2partOddSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tbody
+                                    each cours in _2partOddSem
+                                        +tableData(cours.studentId,cours.session,cours.courses,cours.gainCredit,cours.CGPA,cours.student.avgCGPA,cours.status,cours._id)
+                                        
+                    br
+                    br
+                    br                        
+                
+                if _2partEvenSem.length > 0
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                h4.text-center.font-bold.col-pink
+                                    | Part 2 even Semester
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _2partEvenSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_2partEvenSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tfoot
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _2partEvenSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_2partEvenSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tbody
+                                    each cours in _2partEvenSem
+                                        +tableData(cours.studentId,cours.session,cours.courses,cours.gainCredit,cours.CGPA,cours.student,cours.status,cours._id)
+                                        
+                    br
+                    br
+                    br                        
+                
+                if _3partOddSem.length > 0
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                h4.text-center.font-bold.col-pink
+                                    | Part 3 odd Semester
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _3partOddSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_3partOddSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tfoot
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _3partOddSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_3partOddSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tbody
+                                    each cours in _3partOddSem
+                                        +tableData(cours.studentId,cours.session,cours.courses,cours.gainCredit,cours.CGPA,cours.student,cours.status,cours._id)
+                                        
+                    br
+                    br
+                    br                        
+                
+                if _3partEvenSem.length > 0
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                h4.text-center.font-bold.col-pink
+                                    | Part 3 even Semester
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _3partEvenSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_3partEvenSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tfoot
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _3partEvenSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_3partEvenSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tbody
+                                    each cours in _3partEvenSem
+                                        +tableData(cours.studentId,cours.session,cours.courses,cours.gainCredit,cours.CGPA,cours.student,cours.status,cours._id)
+                                        
+                    br
+                    br
+                    br                        
+                
+                if _4partOddSem.length > 0
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                h4.text-center.font-bold.col-pink
+                                    | Part 4 odd Semester
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _4partOddSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_4partOddSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tfoot
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _4partOddSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_4partOddSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tbody
+                                    each cours in _4partOddSem
+                                        +tableData(cours.studentId,cours.session,cours.courses,cours.gainCredit,cours.CGPA,cours.student,cours.status,cours._id)
+                                        
+                    br
+                    br
+                    br                        
+                
+                if _4partEvenSem.length > 0
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                h4.text-center.font-bold.col-pink
+                                    | Part 4 even Semester
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _4partEvenSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_4partEvenSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tfoot
+                                    tr
+                                        th Student ID
+                                        th Session
+                                        each cours in _4partEvenSem[0].courses
+                                            th= `${cours.courseCode}` 
+                                        th Credit/#{_4partEvenSem[0].totalCredit}
+                                        th CGPA
+                                        th Avg CGPA
+                                        th Status
+                                        th Action
+                                tbody
+                                    each cours in _4partEvenSem
+                                        +tableData(cours.studentId,cours.session,cours.courses,cours.gainCredit,cours.CGPA,cours.student,cours.status,cours._id)                        
+                

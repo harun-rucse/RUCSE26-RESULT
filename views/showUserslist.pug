@@ -1,0 +1,59 @@
+extends base
+
+mixin userData(name, photo, studentId, phone, role, id)
+    tr
+        if role === 'admin'
+            td= name
+                span.m-l-5
+                    i.col-teal.font-18.material-icons verified_user
+        if role === 'subadmin'
+            td= name
+                span.m-l-5
+                    i.col-orange.font-18.material-icons verified_user
+        if role === 'user'
+            td= name
+        td
+            .user-info
+                .image
+                    img(src=`/backend/images/users/${photo}` width='48' height='48' alt=`${user.name}`)  
+        td= studentId
+        td= phone
+        td
+            a.btn.bg-purple.btn-sm.waves-effect.m-r-5(href=`/user/show/${id}`)
+                i.material-icons visibility
+        td 
+            a.btn.bg-teal.btn-sm.waves-effect.m-r-5(href=`/result/view/${studentId}`)
+                i.material-icons visibility
+            
+                    
+block content
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    h2.text-center.font-bold.col-pink
+                        | Users List
+                    
+                .body
+                    .table-responsive
+                        table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                            thead
+                                tr
+                                    th Name
+                                    th Photo
+                                    th Student ID
+                                    th Phone
+                                    th View Profile
+                                    th Show Result
+                            tfoot
+                                tr
+                                    th Name
+                                    th Photo
+                                    th Student ID
+                                    th Phone
+                                    th View Profile
+                                    th Show Result
+                            tbody
+                                each user in data
+                                    +userData(user.name, user.photo, user.studentId, user.phone,user.role, user._id)
+                                

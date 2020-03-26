@@ -1,0 +1,65 @@
+extends base
+
+mixin tableData(part,semester,session,coursData,arr,id)
+
+    tr
+        td= part
+        td= semester
+        td= session
+        - let cnt = 0;
+        each cours in coursData
+            td= cours.courseCode
+            td= cours.courseCredit
+            td= cours.courseName
+            
+            -cnt++
+        if cnt !=arr.length
+            - newArr = new Array((arr.length-cnt)*3)
+            each c in newArr
+                td
+                
+                    
+        td 
+            a.btn.btn-primary.btn-xm.waves-effect.m-r-5(href=`/course/edit/${id}`)
+                i.material-icons launch
+            button#delete_course_btn.btn.btn-danger.btn-xm.waves-effect(type= 'button' value=`${id}` )
+                i.material-icons delete
+
+
+block content
+    .row.clearfix
+        .col-lg-12.col-md-12.col-sm-12.col-xs-12
+            .card
+                .header
+                    a#course_show.btn.btn.bg-purple.waves-effect(href='/addcourse')
+                        i.material-icons add_circle
+                        span Add New Course
+                        
+                        
+                if data.length > 0
+                    .body
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th Part
+                                        th Semester
+                                        th Session
+                                        each cours in arr
+                                            th Course Code
+                                            th Course Credit
+                                            th Course Title
+                                        th Action
+                                tfoot
+                                    tr
+                                        th Part
+                                        th Semester
+                                        th Session
+                                        each cours in arr
+                                            th Course Code
+                                            th Course Credit
+                                            th Course Title
+                                        th Action
+                                tbody
+                                    each cours in data
+                                        +tableData(cours.part,cours.semester,cours.session,cours.courses,arr,cours._id)    

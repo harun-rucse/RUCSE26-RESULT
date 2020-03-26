@@ -1,0 +1,22 @@
+
+//- .search-bar
+//-     .search-icon
+//-         i.material-icons search
+//-     input(type='text' placeholder='START TYPING...')
+//-     .close-search
+//-         i.material-icons close
+
+nav.navbar
+    .container-fluid
+        .navbar-header
+            if user.role == 'admin'
+                a.navbar-brand(href='/admin') RU CSE Result Managment System
+            else
+                a.navbar-brand(href='/dashboard') RU CSE Result Managment System
+        //- #navbar-collapse.collapse.navbar-collapse
+        //-     ul.nav.navbar-nav.navbar-right
+        //-         // Call Search
+        //-         li
+        //-             a.js-search(href='javascript:void(0);' data-close='true')
+        //-                 i.material-icons search
+        //-         // #END# Call Search

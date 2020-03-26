@@ -1,0 +1,472 @@
+extends base
+
+mixin userResultData(i,courseCode, courseCredit, courseTitle, courseGrade, CGPA, avgCGPA, len)
+    tr
+        td= i
+        td= courseCode
+        td= courseCredit
+        td= courseTitle        
+        td= courseGrade
+        -const isImprove = ['B-','C+','C','D','F'];
+        if isImprove.includes(courseGrade)
+            td 
+                span.badge.bg-teal Yes
+        else
+            td
+                span.badge.bg-pink No
+        - let cnt = parseInt(len/2)+1;
+        if i === cnt 
+            td= CGPA
+            td= avgCGPA
+
+    
+block content
+    if _1partOddSem.length  > 0
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Part 1 odd Semester
+                        
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                .col-sm-3
+                                    p.font-bold Name :  #{_1partOddSem[0].student.name}
+                                .col-sm-3
+                                    p.font-bold.col-pink Student ID: #{_1partOddSem[0].studentId}
+                                .col-sm-2
+                                    p.font-bold.col-blue-grey Total Credit: #{_1partOddSem[0].totalCredit}
+                                .col-sm-2
+                                    p.font-bold.col-teal Earn Credit: #{_1partOddSem[0].gainCredit}
+                                .col-sm-2
+                                    if `${_1partOddSem[0].status}`== 'passed'
+                                        p.font-bold.col-teal Status: #{_1partOddSem[0].status}
+                                    else
+                                        p.font-bold.col-pink Status: #{_1partOddSem[0].status}
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tfoot
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tbody
+                                    each res in _1partOddSem
+                                        - let i = 1;
+                                        each cours in res.courses
+                                            +userResultData(i,cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, res.CGPA, res.student.avgCGPA,res.courses.length)
+                                            - i++;
+        
+    br
+    br
+    
+    if _1partEvenSem.length  > 0
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Part 1 even Semester
+                        
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                .col-sm-3
+                                    p.font-bold Name :  #{_1partEvenSem[0].student.name}
+                                .col-sm-3
+                                    p.font-bold.col-pink Student ID: #{_1partEvenSem[0].studentId}
+                                .col-sm-2
+                                    p.font-bold.col-blue-grey Total Credit: #{_1partEvenSem[0].totalCredit}
+                                .col-sm-2
+                                    p.font-bold.col-teal Earn Credit: #{_1partEvenSem[0].gainCredit}
+                                .col-sm-2
+                                    if `${_1partEvenSem[0].status}`== 'passed'
+                                        p.font-bold.col-teal Status: #{_1partEvenSem[0].status}
+                                    else
+                                        p.font-bold.col-pink Status: #{_1partEvenSem[0].status}
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tfoot
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tbody
+                                    each res in _1partEvenSem
+                                        - let i = 1;
+                                        each cours in res.courses
+                                            +userResultData(i,cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, res.CGPA, res.student.avgCGPA,res.courses.length)
+                                            - i++;
+                                           
+                                           
+    br
+    br
+                                            
+    if _2partOddSem.length  > 0
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Part 2 odd Semester
+                        
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                .col-sm-3
+                                    p.font-bold Name :  #{_2partOddSem[0].student.name}
+                                .col-sm-3
+                                    p.font-bold.col-pink Student ID: #{_2partOddSem[0].studentId}
+                                .col-sm-2
+                                    p.font-bold.col-blue-grey Total Credit: #{_2partOddSem[0].totalCredit}
+                                .col-sm-2
+                                    p.font-bold.col-teal Earn Credit: #{_2partOddSem[0].gainCredit}
+                                .col-sm-2
+                                    if `${_2partOddSem[0].status}`== 'passed'
+                                        p.font-bold.col-teal Status: #{_2partOddSem[0].status}
+                                    else
+                                        p.font-bold.col-pink Status: #{_2partOddSem[0].status}
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tfoot
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                        
+                                tbody
+                                    each res in _2partOddSem
+                                        - let i = 1;
+                                        each cours in res.courses
+                                            +userResultData(i,cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, res.CGPA, res.student.avgCGPA,res.courses.length)
+                                            - i++;
+    br
+    br
+                                            
+    if _2partEvenSem.length  > 0
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Part 2 even Semester
+                        
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                .col-sm-3
+                                    p.font-bold Name :  #{_2partEvenSem[0].student.name}
+                                .col-sm-3
+                                    p.font-bold.col-pink Student ID: #{_2partEvenSem[0].studentId}
+                                .col-sm-2
+                                    p.font-bold.col-blue-grey Total Credit: #{_2partEvenSem[0].totalCredit}
+                                .col-sm-2
+                                    p.font-bold.col-teal Earn Credit: #{_2partEvenSem[0].gainCredit}
+                                .col-sm-2
+                                    if `${_2partEvenSem[0].status}`== 'passed'
+                                        p.font-bold.col-teal Status: #{_2partEvenSem[0].status}
+                                    else
+                                        p.font-bold.col-pink Status: #{_2partEvenSem[0].status}
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tfoot
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tbody
+                                    each res in _2partEvenSem
+                                        - let i = 1;
+                                        each cours in res.courses
+                                            +userResultData(i,cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, res.CGPA, res.student.avgCGPA,res.courses.length)
+                                            - i++;
+    br
+    br
+                                            
+    if _3partOddSem.length  > 0
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Part 3 odd Semester
+                        
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                .col-sm-3
+                                    p.font-bold Name :  #{_3partOddSem[0].student.name}
+                                .col-sm-3
+                                    p.font-bold.col-pink Student ID: #{_3partOddSem[0].studentId}
+                                .col-sm-2
+                                    p.font-bold.col-blue-grey Total Credit: #{_3partOddSem[0].totalCredit}
+                                .col-sm-2
+                                    p.font-bold.col-teal Earn Credit: #{_3partOddSem[0].gainCredit}
+                                .col-sm-2
+                                    if `${_3partOddSem[0].status}`== 'passed'
+                                        p.font-bold.col-teal Status: #{_3partOddSem[0].status}
+                                    else
+                                        p.font-bold.col-pink Status: #{_3partOddSem[0].status}
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tfoot
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tbody
+                                    each res in _3partOddSem
+                                        - let i = 1;
+                                        each cours in res.courses
+                                            +userResultData(i,cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, res.CGPA, res.student.avgCGPA,res.courses.length)
+                                            - i++;
+    br
+    br
+                                            
+    if _3partEvenSem.length  > 0
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Part 3 even Semester
+                        
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                .col-sm-3
+                                    p.font-bold Name :  #{_3partEvenSem[0].student.name}
+                                .col-sm-3
+                                    p.font-bold.col-pink Student ID: #{_3partEvenSem[0].studentId}
+                                .col-sm-2
+                                    p.font-bold.col-blue-grey Total Credit: #{_3partEvenSem[0].totalCredit}
+                                .col-sm-2
+                                    p.font-bold.col-teal Earn Credit: #{_3partEvenSem[0].gainCredit}
+                                .col-sm-2
+                                    if `${_3partEvenSem[0].status}`== 'passed'
+                                        p.font-bold.col-teal Status: #{_3partEvenSem[0].status}
+                                    else
+                                        p.font-bold.col-pink Status: #{_3partEvenSem[0].status}
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tfoot
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tbody
+                                    each res in _3partEvenSem
+                                        - let i = 1;
+                                        each cours in res.courses
+                                            +userResultData(i,cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, res.CGPA, res.student.avgCGPA,res.courses.length)
+                                            - i++;
+    br
+    br
+                                            
+    if _4partOddSem.length  > 0
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Part 4 odd Semester
+                        
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                .col-sm-3
+                                    p.font-bold Name :  #{_4partOddSem[0].student.name}
+                                .col-sm-3
+                                    p.font-bold.col-pink Student ID: #{_4partOddSem[0].studentId}
+                                .col-sm-2
+                                    p.font-bold.col-blue-grey Total Credit: #{_4partOddSem[0].totalCredit}
+                                .col-sm-2
+                                    p.font-bold.col-teal Earn Credit: #{_4partOddSem[0].gainCredit}
+                                .col-sm-2
+                                    if `${_4partOddSem[0].status}`== 'passed'
+                                        p.font-bold.col-teal Status: #{_4partOddSem[0].status}
+                                    else
+                                        p.font-bold.col-pink Status: #{_4partOddSem[0].status}
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tfoot
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tbody
+                                    each res in _4partOddSem
+                                        - let i = 1;
+                                        each cours in res.courses
+                                            +userResultData(i,cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, res.CGPA, res.student.avgCGPA,res.courses.length)
+                                            - i++;
+    br
+    br
+    
+    if _4partEvenSem.length  > 0
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink
+                            | Part 4 even Semester
+                        
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                .col-sm-3
+                                    p.font-bold Name :  #{_4partEvenSem[0].student.name}
+                                .col-sm-3
+                                    p.font-bold.col-pink Student ID: #{_4partEvenSem[0].studentId}
+                                .col-sm-2
+                                    p.font-bold.col-blue-grey Total Credit: #{_4partEvenSem[0].totalCredit}
+                                .col-sm-2
+                                    p.font-bold.col-teal Earn Credit: #{_4partEvenSem[0].gainCredit}
+                                .col-sm-2
+                                    if `${_4partEvenSem[0].status}`== 'passed'
+                                        p.font-bold.col-teal Status: #{_4partEvenSem[0].status}
+                                    else
+                                        p.font-bold.col-pink Status: #{_4partEvenSem[0].status}
+                        .table-responsive
+                            table.table.table-bordered.table-striped.table-hover.dataTable.js-exportable
+                                thead
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tfoot
+                                    tr
+                                        th S/N
+                                        th Course Code
+                                        th Course Credit
+                                        th Course Title
+                                        th Grade
+                                        th Improvement
+                                        th CGPA
+                                        th Avg CGPA
+                                tbody
+                                    each res in _4partEvenSem
+                                        - let i = 1;
+                                        each cours in res.courses
+                                            +userResultData(i,cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, res.CGPA, res.student.avgCGPA,res.courses.length)
+                                            - i++;
+                                            
+    if _1partOddSem.length == 0 && _1partEvenSem.length == 0 && _2partOddSem.length == 0 && _2partEvenSem.length == 0 && _3partOddSem.length == 0 && _3partEvenSem.length == 0 && _4partOddSem.length == 0 && _4partEvenSem.length == 0
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header
+                        h2.text-center.font-bold.col-pink Result Not Published Yet!!!
+                                
