@@ -4,19 +4,25 @@ html
         meta(charset='UTF-8')
         meta(content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport')
         title #{title}
-        // Favicon
-        link(rel='shortcut icon' type='image/x-icon' href='/backend/assets/images/favicon.ico')
-        // Google Fonts
+        
+        //- Favicon
+        link(rel='shortcut icon' type='image/x-icon' href='/backend/assets/images/logo.png')
+                
+        //-Google Fonts
         link(href='https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css')
         link(href='https://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet' type='text/css')
-        // Bootstrap Core Css
-        link(href='/backend/assets/plugins/bootstrap/css/bootstrap.css' rel='stylesheet')
-        // Waves Effect Css
-        link(href='/backend/assets/plugins/node-waves/waves.css' rel='stylesheet')
-        // Animation Css
-        link(href='/backend/assets/plugins/animate-css/animate.css' rel='stylesheet')
-        // Custom Css
-        link(href='/backend/assets/css/style.css' rel='stylesheet')
+
+        //- Bootstrap Core Css
+        link(href='/backend/assets/plugins/bootstrap/css/bootstrap.min.css' rel='stylesheet')
+        
+        //- Waves Effect Css
+        link(href='/backend/assets/plugins/node-waves/waves.min.css' rel='stylesheet')
+
+        //- Animation Css
+        link(href='/backend/assets/plugins/animate-css/animate.min.css' rel='stylesheet')
+        
+        //- Custom Css
+        link(href='/backend/assets/css/style.min.css' rel='stylesheet')
 
     body.signup-page
         .signup-box
@@ -70,18 +76,18 @@ html
                             a(href='/') You already have a membership?
 
 
-    // Jquery Core Js
-    script(src='/backend/assets/plugins/jquery/jquery.min.js')
-    // Bootstrap Core Js
-    script(src='/backend/assets/plugins/bootstrap/js/bootstrap.js')
-    // Waves Effect Plugin Js
-    script(src='/backend/assets/plugins/node-waves/waves.js')
-    // Validation Plugin Js
-    script(src='/backend/assets/plugins/jquery-validation/jquery.validate.js')
-    // Custom Js
-    script(src='/backend/assets/js/admin.js')
-    script(src='/backend/assets/js/pages/examples/sign-in.js')
-    
-     // Custom Js
-    script(src='/backend/js/bundle.js')
+        // Jquery Core Js
+        script(src='/backend/assets/plugins/jquery/jquery.min.js')
+        // Bootstrap Core Js
+        script(src='/backend/assets/plugins/bootstrap/js/bootstrap.min.js')
+        // Waves Effect Plugin Js
+        script(src='/backend/assets/plugins/node-waves/waves.min.js')
+        // Validation Plugin Js
+        script(src='/backend/assets/plugins/jquery-validation/jquery.validate.js')
+        // Custom Js
+        script(src='/backend/assets/js/admin.js')
+        script(src='/backend/assets/js/pages/examples/sign-in.js')
+        
+        // Custom Js
+        script(src='/backend/js/bundle.js')
 
