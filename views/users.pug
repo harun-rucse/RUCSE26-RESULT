@@ -16,7 +16,7 @@ mixin userData(name, photo, studentId, email, phone, id, role)
             .user-info
                 .image
                     a(href=`/user/show/${id}`)
-                        img(src=`/backend/images/users/${photo}` width='48' height='48' alt=`${user.name}`)  
+                        img(src=`/backend/images/users/${photo}` width='48' height='48' alt= name.split(' ')[0])  
         td= studentId
         td= email
         td= phone

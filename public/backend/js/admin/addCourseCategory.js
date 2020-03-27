@@ -38,7 +38,7 @@ export const saveCourseCategory = async (courses, part, semester, session) => {
       }
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Course Add successfully');
+      showAlert('success', 'Course Added successfully!');
       window.setTimeout(() => {
         location.assign('/courses');
       }, 800);

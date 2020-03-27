@@ -11,7 +11,7 @@ export const updateCourseCategory = async (courses, id) => {
       }
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Course Update successfull');
+      showAlert('success', 'Course Update successfullY!');
       window.setTimeout(() => {
         location.assign('/courses');
       }, 500);

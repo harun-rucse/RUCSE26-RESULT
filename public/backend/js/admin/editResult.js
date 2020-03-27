@@ -12,7 +12,7 @@ export const updateStudentResult = async (courses, studentId, id) => {
       }
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Result Update successfull');
+      showAlert('success', 'Result Update successfully!');
       window.setTimeout(() => {
         location.assign('/results');
       }, 500);

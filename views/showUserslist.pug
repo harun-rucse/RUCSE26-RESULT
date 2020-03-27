@@ -15,7 +15,7 @@ mixin userData(name, photo, studentId, phone, role, id)
         td
             .user-info
                 .image
-                    img(src=`/backend/images/users/${photo}` width='48' height='48' alt=`${user.name}`)  
+                    img(src=`/backend/images/users/${photo}` width='48' height='48' alt= name.split(' ')[0])  
         td= studentId
         td= phone
         td

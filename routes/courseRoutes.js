@@ -7,7 +7,7 @@ const router = express.Router();
 router.post('/semsterCourse', courseController.getCourseBySemester);
 
 router.use(authController.protect);
-router.use(authController.resticTo('admin'));
+router.use(authController.resticTo('admin', 'subadmin'));
 
 router
   .route('/')
@@ -18,6 +18,6 @@ router
   .route('/:id')
   .get(courseController.getCourse)
   .patch(courseController.updateCourse)
-  .delete(courseController.deleteCourse);
+  .delete(authController.resticTo('admin'), courseController.deleteCourse);
 
 module.exports = router;

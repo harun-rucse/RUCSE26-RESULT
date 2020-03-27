@@ -9,7 +9,7 @@ export const updateMyProfile = async data => {
       data
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'DATA update successfully!');
+      showAlert('success', 'Your information successfully updated!');
       window.setTimeout(() => {
         location.assign('/profile');
       }, 100);

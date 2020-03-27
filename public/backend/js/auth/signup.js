@@ -23,7 +23,7 @@ export const signup = async (
       }
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Signup successfull');
+      showAlert('success', 'Signup successfully!');
       window.setTimeout(() => {
         location.assign('/dashboard');
       }, 100);

@@ -87,7 +87,7 @@ export const publishResult = async (
       }
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Result publish successfully');
+      showAlert('success', 'Result publish successfully!');
       window.setTimeout(() => {
         location.assign('/results');
       }, 800);

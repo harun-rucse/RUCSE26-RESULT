@@ -17,7 +17,7 @@ export const changeMyPassword = async (
       }
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Password changed successfull');
+      showAlert('success', 'Your password successfully changed!');
       window.setTimeout(() => {
         location.assign('/login');
       }, 500);

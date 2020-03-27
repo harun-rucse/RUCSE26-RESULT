@@ -22,7 +22,7 @@ export const updateUserInfo = async (
       }
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Edit User Information successfull');
+      showAlert('success', 'User information successfully updated!');
       window.setTimeout(() => {
         location.assign('/users');
       }, 500);

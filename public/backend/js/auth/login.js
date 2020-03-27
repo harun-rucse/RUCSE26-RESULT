@@ -1,18 +1,18 @@
 import axios from 'axios';
 import { showAlert } from './../alerts';
 
-export const login = async (email, password) => {
+export const login = async (studentId, password) => {
   try {
     const res = await axios({
       method: 'POST',
       url: '/api/v1/user/login',
       data: {
-        email,
+        studentId,
         password
       }
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'Logged in successfull');
+      showAlert('success', 'Logged in successfully!');
       window.setTimeout(() => {
         if (res.data.data.user.role === 'admin') {
           location.assign('/admin');
@@ -34,7 +34,7 @@ export const logout = async () => {
     });
 
     if (res.data.status === 'success') {
-      showAlert('success', 'Logged out successfull');
+      showAlert('success', 'Logged out successfully!');
       window.setTimeout(() => {
         location.reload(true);
         location.assign('/login');

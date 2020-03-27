@@ -18,7 +18,7 @@ import { deleteNotificatio } from './deleteNotification';
 import { forgotPassword, resetPassword } from './auth/resetPassword';
 
 //DOM Elements
-const loginForm = document.querySelector('#sign_in');
+const loginBtn = document.querySelector('#sign_in');
 const logOutBtn = document.querySelector('#logout-btn');
 const signupForm = document.querySelector('#sign_up');
 const updateMeBtn = document.querySelector('#update_me');
@@ -93,13 +93,13 @@ if (saveCatBtn) {
 }
 
 //Login Handle
-if (loginForm) {
-  loginForm.addEventListener('submit', e => {
+if (loginBtn) {
+  loginBtn.addEventListener('submit', e => {
     e.preventDefault();
 
-    const email = document.getElementById('email').value;
+    const studentId = document.getElementById('studentId').value;
     const password = document.getElementById('password').value;
-    login(email, password);
+    login(studentId, password);
   });
 }
 

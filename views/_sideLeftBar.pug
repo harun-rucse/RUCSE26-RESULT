@@ -7,7 +7,7 @@ section
                 a(href='/profile')
                     img(src=`/backend/images/users/${user.photo}` width='48' height='48' alt=`${user.name}`)
             .info-container
-                .name(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')= `${user.name}`.split(' ')[0]
+                .name(data-toggle='dropdown' aria-haspopup='true' aria-expanded='false')= `${user.name}`
                 .email= `${user.email}`
                 
         // #User Info
@@ -60,4 +60,5 @@ section
                 a#logout-btn.log
                     i.material-icons.col-red input
                     span Log Out
+                p.m-l-5 Developed By @Harun Or Rashid
                 

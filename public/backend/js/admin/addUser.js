@@ -25,7 +25,7 @@ export const addNewUser = async (
       }
     });
     if (res.data.status === 'success') {
-      showAlert('success', 'User Add successfull');
+      showAlert('success', 'New user added successfully!');
       window.setTimeout(() => {
         location.assign('/users');
       }, 500);
