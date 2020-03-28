@@ -35,6 +35,7 @@ router.get('/profile', viewController.getProfileForm);
 router.get('/user/show/:id', viewController.getUserProfileShowForm);
 router.get('/userslist', viewController.getUserslistForm);
 router.get('/result/view/:studentId', viewController.getRandomResultForm);
+router.get('/result/update/:id', viewController.getEditStudentResultForm);
 
 router.use(authController.viewResticTo('admin', 'subadmin'));
 

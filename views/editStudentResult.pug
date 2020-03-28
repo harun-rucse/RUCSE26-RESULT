@@ -1,0 +1,127 @@
+extend base
+
+mixin studentResult(code, credit, title, grade, i)
+    .col-sm-2
+        .form-group.form-float
+            .form-line
+                input(id= `courseCode_${i+1}`).form-control(type='text' value= `${code}` readonly)
+    .col-sm-2
+        .form-group.form-float
+            .form-line
+                input(id= `courseCredit_${i+1}`).form-control(type='text' value= `${credit}` readonly)
+    .col-sm-6
+        .form-group.form-float
+            .form-line
+                input(id= `courseName_${i+1}`).form-control(type='text' value= `${title}` readonly)
+                                        
+    .col-sm-2
+        - const gradeArr = ['B-', 'C+', 'C', 'D', 'F']
+        if gradeArr.includes(grade)
+            if grade == 'B-'
+                select(id= `courseGrade_${i+1}`).form-control.show-tick
+                    option(value= `${grade}`)= `${grade}`
+                    option(value='A+') A+
+                    option(value='A') A
+                    option(value='A-') A-
+                    option(value='B+') B+
+                    option(value='B') B
+                    
+            if grade == 'C+'
+                select(id= `courseGrade_${i+1}`).form-control.show-tick
+                    option(value= `${grade}`)= `${grade}`
+                    option(value='A+') A+
+                    option(value='A') A
+                    option(value='A-') A-
+                    option(value='B+') B+
+                    option(value='B') B
+                    option(value='B-') B-
+                    
+            if grade == 'C'
+                select(id= `courseGrade_${i+1}`).form-control.show-tick
+                    option(value= `${grade}`)= `${grade}`
+                    option(value='A+') A+
+                    option(value='A') A
+                    option(value='A-') A-
+                    option(value='B+') B+
+                    option(value='B') B
+                    option(value='B-') B-
+                    option(value='C+') C+
+                    
+            if grade == 'D'
+                select(id= `courseGrade_${i+1}`).form-control.show-tick
+                    option(value= `${grade}`)= `${grade}`
+                    option(value='A+') A+
+                    option(value='A') A
+                    option(value='A-') A-
+                    option(value='B+') B+
+                    option(value='B') B
+                    option(value='B-') B-
+                    option(value='C+') C+
+                    option(value='C') C
+                    
+            if grade == 'F'
+                select(id= `courseGrade_${i+1}`).form-control.show-tick
+                    option(value= `${grade}`)= `${grade}`
+                    option(value='A+') A+
+                    option(value='A') A
+                    option(value='A-') A-
+                    option(value='B+') B+
+                    option(value='B') B
+                    option(value='B-') B-
+                    option(value='C+') C+
+                    option(value='C') C
+                    option(value='D') D
+        else
+            select(id= `courseGrade_${i+1}`).form-control.show-tick
+                    option(value= `${grade}`)= `${grade}`
+        
+    .col-sm-12
+
+
+block content
+
+    if `${user._id}` == `${data.student.id}`
+        h2.text-center.col-pink Update My Result
+        .row.clearfix
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+                    .header           
+                        h2.text-center.col-pink.m-t-10
+                            | Result of Part-#{data.part} #{data.semester}- semester
+                        
+                    
+            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                .card
+
+                    .body
+                        .row.clearfix
+                            .col-lg-12.col-md-12.col-sm-12.col-xs-12
+                                
+                            .col-sm-2
+                                h6.card-inside-title COURSE CODE
+
+
+                            .col-sm-2
+                                h6.card-inside-title COURSE CREDIT
+
+                            .col-sm-6
+                                h6.card-inside-title COURSE TITLE
+
+                            .col-sm-2
+                                h5.card-inside-title GRADE
+                            
+                            each cours , i in data.courses
+                                +studentResult(cours.courseCode, cours.courseCredit, cours.courseName, cours.courseGrade, i)
+                    
+                    input#nOfStudentResultSubject(type='hidden' value= data.courses.length)       
+                    .body
+                        .row.clearfix
+                            .col-sm-4
+                            .col-sm-4
+                                
+                            .col-sm-3
+                                a#btn.btn-lg.btn.bg-blue.waves-effect.m-r-10(href='/dashboard')
+                                    span Back
+                                button#student_result_update_btn.btn.bg-purple.waves-effect(type='button' value =`${data._id}`)
+                                    i.material-icons add_circle
+                                    span Update Result

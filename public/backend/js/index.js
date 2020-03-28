@@ -16,6 +16,7 @@ import { updateStudentResult, deleteResult } from './admin/editResult';
 import { updateCourseCategory, deleteCourseCategory } from './admin/editCourse';
 import { deleteNotificatio } from './deleteNotification';
 import { forgotPassword, resetPassword } from './auth/resetPassword';
+import { editStudentResult } from './student/editStudentResult';
 
 //DOM Elements
 const loginBtn = document.querySelector('#sign_in');
@@ -41,6 +42,13 @@ const nOfResult = document.querySelector('#nOfCoursesResult');
 const nOfCourseCat = document.querySelector('#nOfCoursesCategory');
 const forgotPasswordBtn = document.querySelector('#forgotPassword_btn');
 const resetPasswordBtn = document.querySelector('#reset_password');
+
+const studentResultUpdateBtn = document.querySelector(
+  '#student_result_update_btn'
+);
+const nOfStudentResultSubject = document.querySelector(
+  '#nOfStudentResultSubject'
+);
 
 //Course Category Handle
 if (addCatBtn) {
@@ -240,6 +248,25 @@ if (resultEditBtn) {
       courses.push(obj);
     }
     updateStudentResult(courses, studentId, id);
+  });
+}
+
+// Result Edit Handle [for Student]
+if (studentResultUpdateBtn) {
+  studentResultUpdateBtn.addEventListener('click', () => {
+    const id = studentResultUpdateBtn.value;
+    let courses = [];
+    for (var i = 1; i <= nOfStudentResultSubject.value; i++) {
+      let obj = {};
+      obj.courseName = document.getElementById(`courseName_${i}`).value;
+      obj.courseCode = document.getElementById(`courseCode_${i}`).value;
+      obj.courseCredit = document.getElementById(`courseCredit_${i}`).value;
+      obj.courseGrade = document.querySelector(`#courseGrade_${i}`).options[
+        document.querySelector(`#courseGrade_${i}`).selectedIndex
+      ].value;
+      courses.push(obj);
+    }
+    editStudentResult(courses, id);
   });
 }
 

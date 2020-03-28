@@ -63,6 +63,8 @@ exports.getDashBoardForm = async (req, res, next) => {
     _4partOddSem: part4oddSemester,
     _4partEvenSem: part4evenSemester
   });
+
+  console.log(part1oddSemester);
 };
 
 exports.getAdminPreviewResultForm = async (req, res, next) => {
@@ -255,6 +257,15 @@ exports.getResultEditForm = async (req, res, next) => {
     title: 'Edit Result | RU CSE Student Managment System',
     data: result
   });
+};
+
+exports.getEditStudentResultForm = async (req, res, next) => {
+  const result = await Result.findById(req.params.id);
+  res.render('editStudentResult', {
+    title: 'Edit My Result | RU CSE Student Managment System',
+    data: result
+  });
+  console.log(result);
 };
 
 exports.getAddCourseCategoryForm = (req, res, next) => {

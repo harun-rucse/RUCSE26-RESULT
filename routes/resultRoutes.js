@@ -21,7 +21,7 @@ router
   .route('/:id')
   .get(resultController.getResult)
   .patch(
-    authController.resticTo('admin', 'subadmin'),
+    authController.resticTo('user', 'admin', 'subadmin'),
     resultController.updateResult
   )
   .delete(authController.resticTo('admin'), resultController.deleteResult);
