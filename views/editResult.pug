@@ -4,15 +4,15 @@ mixin courseResult(code, credit, title, grade, i)
     .col-sm-2
         .form-group.form-float
             .form-line
-                input(id= `courseCode_${i+1}`).form-control(type='text' value= `${code}`)
+                input(id= `courseCode_${i+1}`).form-control(type='text' value= `${code} ` readonly)
     .col-sm-2
         .form-group.form-float
             .form-line
-                input(id= `courseCredit_${i+1}`).form-control(type='text' value= `${credit}`)
+                input(id= `courseCredit_${i+1}`).form-control(type='text' value= `${credit}` readonly)
     .col-sm-6
         .form-group.form-float
             .form-line
-                input(id= `courseName_${i+1}`).form-control(type='text' value= `${title}`)
+                input(id= `courseName_${i+1}`).form-control(type='text' value= `${title}` readonly)
                                         
     .col-sm-2
         select(id= `courseGrade_${i+1}`).form-control.show-tick
