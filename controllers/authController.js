@@ -57,14 +57,14 @@ exports.login = catchAsync(async (req, res, next) => {
 
   // 1) Check if studentId and password are exists
   if (!studentId || !password) {
-    return next(new AppError('Please provide email and password', 400));
+    return next(new AppError('Please provide studentID and password', 400));
   }
 
   // 2) Check if user is exists and password is correct
   const user = await User.findOne({ studentId }).select('+password');
 
   if (!user || !(await user.correctPassword(password, user.password))) {
-    return next(new AppError('Invalid email or password', 401));
+    return next(new AppError('Invalid studentID or password', 401));
   }
 
   // 3) if everything is ok, then send token to the client
