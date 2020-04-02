@@ -53,7 +53,7 @@ exports.getDashBoardForm = async (req, res, next) => {
   });
 
   res.status(200).render('dashboard', {
-    title: 'Dashboard | RU CSE Student Result Managment System',
+    title: 'Dashboard | The World of RU CSE 26',
     _1partOddSem: part1oddSemester,
     _1partEvenSem: part1evenSemester,
     _2partOddSem: part2oddSemester,
@@ -75,7 +75,7 @@ exports.getAdminPreviewResultForm = async (req, res, next) => {
   });
 
   res.status(200).render('adminPreviewResult', {
-    title: 'Result | RU CSE Student Result Managment System',
+    title: 'Result | The World of RU CSE 26',
     data: data,
     courseLength: courseLength
   });
@@ -83,13 +83,13 @@ exports.getAdminPreviewResultForm = async (req, res, next) => {
 
 exports.getLoginForm = (req, res, next) => {
   res.status(200).render('login', {
-    title: 'Sign In | RU CSE Student Result Managment System'
+    title: 'Sign In | The World of RU CSE 26'
   });
 };
 
 exports.getSignupForm = (req, res, next) => {
   res.status(200).render('signUp', {
-    title: 'Sign Up | RU CSE Student Result Managment System'
+    title: 'Sign Up | The World of RU CSE 26'
   });
 };
 
@@ -151,7 +151,7 @@ exports.getAdminForm = async (req, res, next) => {
     }
   });
   res.status(200).render('admin', {
-    title: 'Administrator | RU CSE Student Result Managment System',
+    title: 'Administrator | The World of RU CSE 26',
     nCourse: courses.length,
     nUsers: users.length,
     nAdmin: nAdmin,
@@ -171,7 +171,7 @@ exports.getAdminForm = async (req, res, next) => {
 
 exports.getProfileForm = (req, res, next) => {
   res.status(200).render('profile', {
-    title: 'Account | RU CSE Student Result Managment System',
+    title: 'Account | The World of RU CSE 26',
     data: req.user
   });
 };
@@ -179,7 +179,7 @@ exports.getProfileForm = (req, res, next) => {
 exports.getUserForm = async (req, res, next) => {
   const users = await User.find();
   res.status(200).render('users', {
-    title: 'All User | RU CSE Student Result Managment System',
+    title: 'All User | The World of RU CSE 26',
     data: users
   });
 };
@@ -187,28 +187,28 @@ exports.getUserForm = async (req, res, next) => {
 exports.getUserProfileShowForm = async (req, res, next) => {
   const user = await User.findById(req.params.id);
   res.status(200).render('showUserProfile', {
-    title: 'Profile | RU CSE Student Result Managment System',
+    title: 'Profile | The World of RU CSE 26',
     data: user
   });
 };
 
 exports.getResultForm = (req, res, next) => {
   res.status(200).render('resultPublish', {
-    title: 'Add Result | RU CSE Student Result Managment System'
+    title: 'Add Result | The World of RU CSE 26'
   });
 };
 
 exports.getUserEditForm = async (req, res, next) => {
   const user = await User.findById(req.params.id);
   res.status(200).render('editUser', {
-    title: 'Edit User | RU CSE Student Result Managment System',
+    title: 'Edit User | The World of RU CSE 26',
     data: user
   });
 };
 
 exports.getAddUserForm = async (req, res, next) => {
   res.status(200).render('addUser', {
-    title: 'Add User | RU CSE Student Result Managment System'
+    title: 'Add User | The World of RU CSE 26'
   });
 };
 
@@ -223,7 +223,7 @@ exports.getShowResultForm = async (req, res, next) => {
   const part4evenSemester = await Result.find({ part: 4, semester: 'even' });
 
   res.status(200).render('showResult', {
-    title: 'All Result | RU CSE Student Result Managment System',
+    title: 'All Result | The World of RU CSE 26',
     _1partOddSem: part1oddSemester,
     _1partEvenSem: part1evenSemester,
     _2partOddSem: part2oddSemester,
@@ -245,7 +245,7 @@ exports.getCourseCategoryForm = async (req, res, next) => {
   const arr = new Array(max);
 
   res.status(200).render('courseCategory', {
-    title: 'All Courses | RU CSE Student Result Managment System',
+    title: 'All Courses | The World of RU CSE 26',
     data: data,
     arr: arr
   });
@@ -254,7 +254,7 @@ exports.getCourseCategoryForm = async (req, res, next) => {
 exports.getResultEditForm = async (req, res, next) => {
   const result = await Result.findById(req.params.id);
   res.render('editResult', {
-    title: 'Edit Result | RU CSE Student Result Managment System',
+    title: 'Edit Result | The World of RU CSE 26',
     data: result
   });
 };
@@ -262,7 +262,7 @@ exports.getResultEditForm = async (req, res, next) => {
 exports.getEditStudentResultForm = async (req, res, next) => {
   const result = await Result.findById(req.params.id);
   res.render('editStudentResult', {
-    title: 'Edit My Result | RU CSE Student Result Managment System',
+    title: 'Edit My Result | The World of RU CSE 26',
     data: result
   });
   console.log(result);
@@ -270,14 +270,14 @@ exports.getEditStudentResultForm = async (req, res, next) => {
 
 exports.getAddCourseCategoryForm = (req, res, next) => {
   res.status(200).render('addCourseCategory', {
-    title: 'Add Course | RU CSE Student Result Managment System'
+    title: 'Add Course | The World of RU CSE 26'
   });
 };
 
 exports.getCourseCategoryEditForm = async (req, res, next) => {
   const course = await Course.findById(req.params.id);
   res.render('editCourseCategory', {
-    title: 'Edit Course | RU CSE Student Result Managment System',
+    title: 'Edit Course | The World of RU CSE 26',
     data: course
   });
 };
@@ -285,7 +285,7 @@ exports.getCourseCategoryEditForm = async (req, res, next) => {
 exports.getUserslistForm = async (req, res, next) => {
   const users = await User.find();
   res.status(200).render('showUserslist', {
-    title: 'All User | RU CSE Student Result Managment System',
+    title: 'All User | The World of RU CSE 26',
     data: users
   });
 };
@@ -297,14 +297,14 @@ exports.getRandomResultForm = async (req, res, next) => {
     semester: 'odd'
   });
   res.status(200).render('randomResultShow', {
-    title: 'Random Result | RU CSE Student Result Managment System',
+    title: 'Random Result | The World of RU CSE 26',
     data: result
   });
 };
 
 exports.getForgotPasswordForm = (req, res) => {
   res.status(200).render('forgotPassword', {
-    title: 'Forgot Password | RU CSE Student Result Managment System'
+    title: 'Forgot Password | The World of RU CSE 26'
   });
 };
 
@@ -312,7 +312,7 @@ exports.getResetPasswordForm = (req, res) => {
   const token = req.params.token;
   console.log(token);
   res.status(200).render('resetPassword', {
-    title: 'Reset Password | RU CSE Student Result Managment System',
+    title: 'Reset Password | The World of RU CSE 26',
     token: req.params.token
   });
 };
